@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>IV·STUDIO</title>
+<!-- La pagina d'ingresso di IV·STUDIO (AMA, 30/10/2026): la vetrina vive su claude.ai, che le dà il suo nome e la sua icona.
+     Da qui invece chi la installa (iPhone, Android, Chrome, Safari) si trova l'icona e il nome IV·STUDIO; aperta dall'icona,
+     la pagina salta da sola alla vetrina. Qui c'è solo il marchio e il link: la libreria resta dietro l'accesso a claude.ai. -->
+<meta name="description" content="IV·STUDIO, la libreria degli stili di editing di Imprenditore Vero.">
+<meta name="application-name" content="IV·STUDIO">
+<meta name="apple-mobile-web-app-title" content="IV·STUDIO">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="theme-color" content="#0e0e10">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png">
+<link rel="icon" type="image/png" sizes="192x192" href="icona-192.png">
+<style>
+  :root{color-scheme:dark;--bg:#0e0e10;--pannello:#18181b;--linea:#2f2f35;--testo:#f4f3ef;--tenue:#a5a5ad;--rosso:#e4372f}
+  *{box-sizing:border-box}
+  html,body{margin:0;background:var(--bg);color:var(--testo);font:16px/1.45 -apple-system,BlinkMacSystemFont,"SF Pro Text","Segoe UI",sans-serif}
+  body{min-height:100dvh;display:grid;place-items:center;padding:calc(24px + env(safe-area-inset-top)) 16px calc(24px + env(safe-area-inset-bottom));
+    background:radial-gradient(70% 45% at 50% 0%,rgba(228,55,47,.16),rgba(14,14,16,0) 70%),var(--bg)}
+  main{width:min(460px,100%);text-align:center}
+  .icona{width:112px;height:112px;border-radius:25px;box-shadow:0 18px 50px rgba(0,0,0,.6)}
+  h1{margin:18px 0 4px;font-size:34px;font-weight:900;letter-spacing:.02em}
+  h1 i{font-style:normal;color:var(--rosso)}
+  .sotto{margin:0 0 22px;color:var(--tenue)}
+  .apri{display:block;padding:15px 20px;border-radius:10px;background:var(--rosso);color:#fff;font-weight:800;font-size:18px;text-decoration:none}
+  .apri:active{filter:brightness(.92)}
+  .installa{margin-top:26px;text-align:left;background:var(--pannello);border:1px solid var(--linea);border-radius:12px;padding:16px 18px}
+  .installa h2{margin:0 0 10px;font-size:16px}
+  .installa ul{margin:0;padding:0;list-style:none;display:grid;gap:10px}
+  .installa li{font-size:14.5px;color:#d6d6db}
+  .installa b{color:var(--testo)}
+  .installa u{text-decoration:none;color:var(--rosso);margin:0 4px}
+  .nota{margin:14px 0 0;font-size:13px;color:var(--tenue)}
+  .salta{color:var(--tenue);font-size:15px}
+</style>
+</head>
+<body>
+<main>
+  <img class="icona" src="icona-512.png" alt="">
+  <h1>IV<i>·</i>STUDIO</h1>
+  <p class="sotto">La libreria degli stili di editing di Imprenditore Vero</p>
+  <a class="apri" id="apri" href="https://claude.ai/artifact/CtYL2ZyAvxSUzmTsyVYsFD">Apri IV·STUDIO</a>
+  <section class="installa" id="installa">
+    <h2>Mettila come app, con questa icona</h2>
+    <ul>
+      <li><b>iPhone</b> (Safari): Condividi<u>›</u>Visualizza altro<u>›</u>Aggiungi alla schermata Home</li>
+      <li><b>Android</b> (Chrome): ⋮<u>›</u>Aggiungi a schermata Home (o Installa app)</li>
+      <li><b>Mac</b> (Chrome): ⋮<u>›</u>Trasmetti, salva e condividi<u>›</u>Installa pagina come app</li>
+      <li><b>Mac</b> (Safari): Archivio<u>›</u>Aggiungi al Dock</li>
+    </ul>
+    <p class="nota">Il nome e l'icona sono già IV·STUDIO. La prima volta potrebbe chiederti di entrare in claude.ai con l'account dell'azienda.</p>
+  </section>
+</main>
+<script>
+  // aperta dall'icona (app installata) si va dritti alla vetrina; nel browser resta questa pagina, da dove si installa
+  const installata = matchMedia("(display-mode: standalone)").matches || matchMedia("(display-mode: minimal-ui)").matches || navigator.standalone === true;
+  if (installata) {
+    document.getElementById("installa").hidden = true;
+    document.querySelector(".sotto").innerHTML = '<span class="salta">Apro IV·STUDIO…</span>';
+    location.replace(document.getElementById("apri").href);
+  }
+</script>
+</body>
+</html>
